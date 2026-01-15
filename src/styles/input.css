@@ -1,0 +1,94 @@
+.input {
+  height: var(--input-height);
+  padding: 0 var(--input-padding-x);
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  caret-color: var(--color-caret);
+  text-align: left;
+  transition:
+    border-color var(--duration-fast) var(--ease-default),
+    box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.input::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text);
+  -webkit-box-shadow: 0 0 0 100vh var(--color-input-bg) inset;
+}
+
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow:
+    0 0 0 3px var(--color-focus-ring),
+    0 0 0 100vh var(--color-input-bg) inset;
+  border-color: var(--color-primary);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper .input {
+  width: 100%;
+  padding-right: calc(var(--input-padding-x) + 32px);
+}
+
+.input-wrapper__toggle {
+  position: absolute;
+  right: var(--space-2);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-tertiary);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition:
+    color var(--duration-fast) var(--ease-default),
+    background-color var(--duration-fast) var(--ease-default);
+}
+
+.input-wrapper__toggle:hover {
+  color: var(--color-text);
+}
+
+.input-wrapper__toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--color-error-accent);
+}
+
+.input[aria-invalid="true"]:focus {
+  border-color: var(--color-error-accent);
+  box-shadow: 0 0 0 3px var(--color-error-focus-ring);
+}
+
+.field__error {
+  margin-top: calc(-1 * var(--space-1));
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
+  color: var(--color-error-text);
+  text-align: left;
+}

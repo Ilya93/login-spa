@@ -1,0 +1,88 @@
+.button {
+  height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  transition:
+    background-color var(--duration-fast) var(--ease-default),
+    transform var(--duration-fast) var(--ease-default),
+    box-shadow var(--duration-fast) var(--ease-default),
+    border-color var(--duration-fast) var(--ease-default),
+    opacity var(--duration-base) var(--ease-default);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.button:disabled:not(.button--loading) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button--primary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--color-primary-h) 80% 46%),
+    hsl(var(--color-primary-h) 78% 38%)
+  );
+  color: var(--color-text-inverse);
+  border-color: hsl(var(--color-primary-h) 70% 34% / 0.6);
+  box-shadow: 0 8px 16px -10px hsl(var(--color-primary-h) 70% 30% / 0.7);
+  letter-spacing: 0.01em;
+}
+
+.button--primary:hover:not(:disabled) {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--color-primary-h) 82% 50%),
+    hsl(var(--color-primary-h) 80% 42%)
+  );
+}
+
+.button--primary:active:not(:disabled) {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--color-primary-h) 84% 42%),
+    hsl(var(--color-primary-h) 82% 34%)
+  );
+}
+
+.button--primary:focus-visible {
+  box-shadow:
+    0 0 0 3px var(--color-focus-ring),
+    0 8px 16px -10px hsl(var(--color-primary-h) 70% 30% / 0.7);
+}
+
+.button--full {
+  width: 100%;
+}
+
+.button--loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.button--loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-text-inverse);
+  border-color: var(--color-text-inverse) transparent var(--color-text-inverse) transparent;
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
